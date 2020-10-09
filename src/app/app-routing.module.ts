@@ -1,3 +1,5 @@
+import { AddmovieComponent } from './admin/addmovie/addmovie.component';
+import { AddTheatreComponent } from './admin/add-theatre/add-theatre.component';
 import { CustomerComponent } from './customer/customer/customer.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -10,9 +12,10 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'admin', component: AdminComponent, pathMatch: 'full' },
-  { path: 'customer', component: CustomerComponent, pathMatch: 'full' }
+  { path: 'customer', component: CustomerComponent, pathMatch: 'full' },
+  { path: 'theatre', component: AddTheatreComponent, pathMatch: 'full' },
+  { path: 'movie', component: AddmovieComponent, pathMatch: 'full' },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

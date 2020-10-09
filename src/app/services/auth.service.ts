@@ -8,11 +8,15 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
   user = new Subject<User>();
-  
+
   constructor(private httpClient: HttpClient) { }
 
-  signup(user:User){
+  signup(user: User) {
     let url = "http://localhost:7070/movie_app/v1/customers";
     return this.httpClient.post<User>(url, user);
   }

@@ -1,0 +1,74 @@
+<div class="padding-top-15 padding-bottom-15">
+    <div class="col-sm-12">
+        <button type="submit" style="position: absolute;" class="btn btn-sm btn-outline-secondary" (click)="goBack()">
+            Back
+        </button>
+        <h2 class="text-center font-weight-light">
+            Add a Theatre
+        </h2>
+    </div>
+</div>
+<div class="col-md-6 offset-md-3">
+    <form (ngSubmit)="addTheatre()" [formGroup]="theatreForm">
+        <div class="form-group row">
+            <label for="name" class="col-sm-3 col-form-label col-form-label-sm">Theatre Name</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" id="name" placeholder="Theatre Name (required)"
+                    formControlName="theatreName" [ngClass]="{
+                  'is-invalid': 
+                    (theatreForm.get('theatreName').touched ||
+                      theatreForm.get('theatreName').dirty) &&
+                    !theatreForm.get('theatreName').valid
+                }" />
+                <span class="invalid-feedback">
+                    <span *ngIf="theatreForm.get('theatreName').errors?.required">
+                        Please enter movie name.
+                    </span>
+                    <span *ngIf="theatreForm.get('theatreName').errors?.minlength">
+                        The theatre name must be at least 3 characters long.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="price" class="col-sm-3 col-form-label col-form-label-sm">Ticket Price</label>
+            <div class="col-sm-9">
+                <input type="number" class="form-control form-control-sm" formControlName="ticketPrice" [ngClass]="{
+                    'is-invalid': 
+                      (theatreForm.get('ticketPrice').touched ||
+                        theatreForm.get('ticketPrice').dirty) &&
+                      !theatreForm.get('ticketPrice').valid
+                  }" />
+                <span class="invalid-feedback">
+                    <span *ngIf="theatreForm.get('ticketPrice').errors?.required">
+                        Please enter ticket price
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="name" class="col-sm-3 col-form-label col-form-label-sm">City</label>
+            <div class="col-sm-9">
+                <select formControlName="cityId" class="custom-select custom-select-sm mb-3">
+                    <option value="">Select City</option>
+                    <option value="1">Hyderabad</option>
+                    <option value="2">Mumbai</option>
+                    <option value="3">Banglore</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <button type="reset" class="btn btn-outline-danger">
+                    Clear Form
+                </button>
+                <button type="submit" class="btn btn-primary pull-right" [disabled]="!theatreForm.valid">
+                    Add
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
