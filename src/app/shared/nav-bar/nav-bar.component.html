@@ -1,0 +1,24 @@
+<nav class='navbar navbar-expand navbar-light bg-light'>
+    <ul class='nav nav-pills'>
+        <li class="nav-item active">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control" type="search" placeholder="movie name" name="movieName"
+                    [(ngModel)]="movieName" style="width: 300px;" />
+                <button class="btn btn-success" type="submit" (click)="searchMovie()">
+                    Search
+                </button>
+            </form>
+        </li>
+
+        <div class="btn-group" *ngIf="user?.userTypeId else notLoggedIn">
+            <li *ngFor="let link of navLinks"><a class="nav-link" [routerLink]="[link.route]">{{ link.label }}</a></li>
+        </div>
+
+        <ng-template #notLoggedIn>
+            <ul class="navbar-nav ml-auto">
+                <a class="btn btn-sm btn-primary clickable" [routerLink]="'/signin'">Signin</a> |
+                <a class="btn btn-sm btn-primary clickable" [routerLink]="'/signup'">Signup</a>
+            </ul>
+        </ng-template>
+    </ul>
+</nav>

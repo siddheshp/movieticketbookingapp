@@ -1,0 +1,114 @@
+<div class="padding-top-15 padding-bottom-15">
+    <div class="col-sm-12">
+        <h2 class="text-center font-weight-light">
+            Signup
+        </h2>
+    </div>
+</div>
+<div class="col-md-4 offset-md-4">
+    <form #signupForm="ngForm" (ngSubmit)="signupUser()">
+        <div class="form-group row">
+            <label for="firstname" class="col-sm-3 col-form-label col-form-label-sm">First Name</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" placeholder="First Name" required minlength="2"
+                    name="firstName" [(ngModel)]="signup.firstName" #firstNameVar="ngModel" [ngClass]="{
+                        'is-invalid':
+                          (firstNameVar.touched || firstNameVar.dirty) &&
+                          !firstNameVar.valid
+                      }" />
+                <span class="invalid-feedback">
+                    <span *ngIf="firstNameVar.errors?.required">
+                        Please enter firstName.
+                    </span>
+                    <span *ngIf="firstNameVar.errors?.minlength">
+                        First Name must be at least 2 characters long.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="lastName" class="col-sm-3 col-form-label col-form-label-sm">Last Name</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" placeholder="Last Name" required minlength="2"
+                    name="lastName" [(ngModel)]="signup.lastName" #lastNameVar="ngModel" [ngClass]="{
+                        'is-invalid':
+                          (lastNameVar.touched || lastNameVar.dirty) &&
+                          !lastNameVar.valid
+                      }" />
+                <span class="invalid-feedback">
+                    <span *ngIf="lastNameVar.errors?.required">
+                        Please enter Last Name.
+                    </span>
+                    <span *ngIf="lastNameVar.errors?.minlength">
+                        Last Name must be at least 2 characters long.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="username" class="col-sm-3 col-form-label col-form-label-sm">Username</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control form-control-sm" id="username" placeholder="Username" required
+                    minlength="6" name="username" [(ngModel)]="signup.username" #usernameVar="ngModel" [ngClass]="{
+            'is-invalid': (usernameVar.touched || usernameVar.dirty) && !usernameVar.valid }" />
+                <span class="invalid-feedback">
+                    <span *ngIf="usernameVar.errors?.required">
+                        Please enter username.
+                    </span>
+                    <span *ngIf="usernameVar.errors?.minlength">
+                        Username must be at least 6 characters long.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password" class="col-sm-3 col-form-label col-form-label-sm">Password</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control form-control-sm" id="password" placeholder="Password"
+                    required minlength="6" name="password" [(ngModel)]="signup.password" #passwordVar="ngModel"
+                    [ngClass]="{'is-invalid': (passwordVar.touched || passwordVar.dirty) && !passwordVar.valid }" />
+                <span class="invalid-feedback">
+                    <span *ngIf="passwordVar.errors?.required">
+                        Please enter password.
+                    </span>
+                    <span *ngIf="passwordVar.errors?.minlength">
+                        Password must be at least 6 characters long.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="dateOfBirth" class="col-sm-3 col-form-label col-form-label-sm">Date of Birth</label>
+            <div class="col-sm-9">
+                <input type="date" class="form-control form-control-sm" id="dateOfBirth" required name="dateOfBirth"
+                    [(ngModel)]="signup.dateOfBirth" #dateOfBirthVar="ngModel" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="userTypeId" class="col-sm-3 col-form-label col-form-label-sm">User Type</label>
+            <div class="col-sm-9">
+                <select class="form-control form-control-sm" id="dateOfBirth" required name="userTypeId"
+                    [(ngModel)]="signup.userTypeId">
+                    <option value="1">Customer</option>
+                    <option value="2">Admin</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <button type="reset" class="btn btn-outline-danger">
+                    Clear Form
+                </button>
+                <button type="submit" class="btn btn-primary pull-right" [disabled]="!signupForm.valid">
+                    Sign up
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
