@@ -1,1 +1,111 @@
-<p>addmovie works!</p>
+<div class="padding-top-15 padding-bottom-15">
+    <div class="col-sm-12">
+        <h2 class="text-center font-weight-light">
+            Add Movie
+        </h2>
+    </div>
+</div>
+<div class="col-md-6 offset-md-3">
+    <form #addMovieForm="ngForm" (ngSubmit)="addMovie()">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control form-control-sm" placeholder="Movie Name (required)" 
+                    required minlength="3" name="name" [(ngModel)]="movie.name" #nameVar="ngModel" [ngClass]="{
+                    'is-invalid': (nameVar.touched || nameVar.dirty) && !nameVar.valid  }" />
+                <span class="invalid-feedback">
+                    <span *ngIf="nameVar.errors?.required">
+                        Please enter movie name.
+                    </span>
+                    <span *ngIf="nameVar.errors?.minlength">
+                        The movie name must be at least 3 characters long.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label col-form-label-sm">Description</label>
+            <div class="col-sm-10">
+                <textarea required minlength="1" class="form-control" required name="description"
+                    [(ngModel)]="movie.description" #descriptionVar="ngModel"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="duration" class="col-sm-2 col-form-label col-form-label-sm" required>Duration (min.)</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control form-control-sm" required minlength="1" name="duration"
+                    [(ngModel)]="movie.duration" #durationVar="ngModel" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="coverURL" class="col-sm-2 col-form-label col-form-label-sm" required>Banner URL</label>
+            <div class="col-sm-10">
+                <input type="url" class="form-control form-control-sm" name="coverURL" [(ngModel)]="movie.coverURL"
+                    #coverURLVar="ngModel" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="trailerURL" class="col-sm-2 col-form-label col-form-label-sm" required>Trailer URL</label>
+            <div class="col-sm-10">
+                <input type="url" class="form-control form-control-sm" name="trailerURL"
+                    [(ngModel)]="movie.trailerURL" #trailerURLVar="ngModel" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="releaseDate" class="col-sm-2 col-form-label col-form-label-sm" required>Release Date</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control form-control-sm" name="releaseDate"
+                    [(ngModel)]="movie.releaseDate" #releaseDateVar="ngModel" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="theatres" class="col-sm-2 col-form-label col-form-label-sm" required>Theatres</label>
+            <div class="col-sm-10">
+                <select class="custom-select" multiple name="theatres" [(ngModel)]="movie.theatreIds"
+                    #theatresVar="ngModel">
+                    <option disabled selected>Select multiple using shift</option>
+                    <option *ngFor="let theatre of theatreList" value="{{theatre.theatreId}}">
+                        {{theatre.theatreName}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="languageId" class="col-sm-2 col-form-label col-form-label-sm" required>Language</label>
+            <div class="col-sm-10">
+                <select class="custom-select" name="languageId" [(ngModel)]="movie.languageId"
+                    #languageIdVar="ngModel">
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label col-form-label-sm" required>Movie Status</label>
+            <div class="col-sm-10">
+                <select class="custom-select" name="statusId" [(ngModel)]="movie.statusId" #statusIdVar="ngModel">
+                    <option value="1">Upcoming</option>
+                    <option value="2">Released</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <button type="reset" class="btn btn-outline-danger">
+                    Clear Form
+                </button>
+                <button type="submit" class="btn btn-primary pull-right" [disabled]="!addMovieForm.valid">
+                    Add
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

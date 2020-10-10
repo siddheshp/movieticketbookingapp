@@ -8,6 +8,13 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  
+  isLoggedIn(): boolean {
+    return this.getToken() != null;
+    //T
+    //F
+  }
+
   getToken() {
     return localStorage.getItem('token');
   }
@@ -15,6 +22,11 @@ export class AuthService {
   user = new Subject<User>();
 
   constructor(private httpClient: HttpClient) { }
+
+  logout() {
+    localStorage.clear();
+    this.user.next(new User());
+  }
 
   signup(user: User) {
     let url = "http://localhost:7070/movie_app/v1/customers";

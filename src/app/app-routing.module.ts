@@ -1,3 +1,4 @@
+import { AuthGuardGuard } from './services/auth-guard.guard';
 import { AddmovieComponent } from './admin/addmovie/addmovie.component';
 import { AddTheatreComponent } from './admin/add-theatre/add-theatre.component';
 import { CustomerComponent } from './customer/customer/customer.component';
@@ -11,10 +12,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'admin', component: AdminComponent, pathMatch: 'full' },
-  { path: 'customer', component: CustomerComponent, pathMatch: 'full' },
-  { path: 'theatre', component: AddTheatreComponent, pathMatch: 'full' },
-  { path: 'movie', component: AddmovieComponent, pathMatch: 'full' },
+  
+  { path: 'admin', component: AdminComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
+  { path: 'customer', component: CustomerComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
+  { path: 'theatre', component: AddTheatreComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
+  { path: 'movie', component: AddmovieComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

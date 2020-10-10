@@ -21,13 +21,10 @@ export class SignupComponent implements OnInit {
   signupUser() {
     //call authservice method, pass details
     this.authService.signup(this.signup).subscribe(result => {
-      // success,       //    alert
       console.log(result);
       alert(JSON.stringify(result));
-      //    navigate signin
       this.router.navigate(['/signin']);
     }, err => {
-      // fail,     //    display error
       alert(JSON.stringify(err));
     });
   }

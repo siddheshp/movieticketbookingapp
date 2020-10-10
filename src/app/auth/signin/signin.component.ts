@@ -17,6 +17,7 @@ export class SigninComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.authService.logout();
   }
 
   onSubmit(credentials: NgForm){
