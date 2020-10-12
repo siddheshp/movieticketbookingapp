@@ -12,6 +12,9 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { CustomerComponent } from './customer/customer/customer.component';
 import { AddmovieComponent } from './admin/addmovie/addmovie.component';
 import { AddTheatreComponent } from './admin/add-theatre/add-theatre.component';
+import { MovieCardComponent } from './customer/movie-card/movie-card.component';
+import { MovieDetailsComponent } from './customer/movie-details/movie-details.component';
+import { DurationPipe } from './shared/duration.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { AddTheatreComponent } from './admin/add-theatre/add-theatre.component';
     AdminComponent,
     CustomerComponent,
     AddmovieComponent,
-    AddTheatreComponent
+    AddTheatreComponent,
+    MovieCardComponent,
+    MovieDetailsComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,

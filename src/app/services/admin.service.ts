@@ -25,4 +25,9 @@ export class AdminService {
     let url = "http://localhost:7070/movie_app/v1/movies";
     return this.httpClient.post(url, movie);
   }
+
+  getMovieList(): Observable<Movie[]> {
+    let url = "http://localhost:7070/movie_app/v1/movies";
+    return this.httpClient.get<Movie[]>(url);
+  }
 }

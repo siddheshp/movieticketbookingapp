@@ -1,0 +1,12 @@
+<div class="card">
+    <img [src]="movie.coverURL" class="card-img-top img-thumbnail clickable" alt="..." />
+    <!-- <img src="{{movie.coverURL}}" class="card-img-top img-thumbnail clickable" alt="..." /> -->
+    <div class="card-body">
+        <h5 class="card-title clickable">{{ movie.name | uppercase }}</h5>
+        <p class="card-text">
+            {{ movie.description }}
+        </p>
+        <a (click)="moreDetails()" class="btn btn-outline-info btn-sm">More...</a>
+        <a (click)="viewShows()" class="btn btn-outline-primary btn-sm pull-right">View Shows</a>
+    </div>
+</div>

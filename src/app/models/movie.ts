@@ -8,5 +8,5 @@ export class Movie {
     trailerURL: any;
     languageId: number;
     statusId: number;
-    theatreIds: number[];
+    theatreIds: any[];
 }

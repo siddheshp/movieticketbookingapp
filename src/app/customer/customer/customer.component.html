@@ -1,1 +1,30 @@
-<p>customer works!</p>
+<div class="row home-wrapper">
+    <div class="col-sm-12 col-md-6">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                    Ongoing Movies
+                </li>
+            </ol>
+        </nav>
+        <div class="row">
+            <div class="col-sm-4" *ngFor="let movie of ongoingMovies">
+                <app-movie-card [movie]="movie"></app-movie-card>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                    Upcoming Movies
+                </li>
+            </ol>
+        </nav>
+        <div class="row">
+            <div class="col-sm-4" *ngFor="let movie of upcomingMovies">
+                <app-movie-card [movie]="movie"></app-movie-card>
+            </div>
+        </div>
+    </div>
+</div>

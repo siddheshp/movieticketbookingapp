@@ -7,14 +7,17 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MovieDetailsComponent } from './customer/movie-details/movie-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   
-  { path: 'admin', component: AdminComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
   { path: 'customer', component: CustomerComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
+  { path: 'movie/:id', pathMatch: 'full', component: MovieDetailsComponent, canActivate: [AuthGuardGuard] },
+  
+  { path: 'admin', component: AdminComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
   { path: 'theatre', component: AddTheatreComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
   { path: 'movie', component: AddmovieComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
 ];
