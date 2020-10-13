@@ -15,6 +15,9 @@ import { AddTheatreComponent } from './admin/add-theatre/add-theatre.component';
 import { MovieCardComponent } from './customer/movie-card/movie-card.component';
 import { MovieDetailsComponent } from './customer/movie-details/movie-details.component';
 import { DurationPipe } from './shared/duration.pipe';
+import { ViewShowsComponent } from './customer/view-shows/view-shows.component';
+import { BookMovieComponent } from './customer/book-movie/book-movie.component';
+import { MyBookingsComponent } from './customer/my-bookings/my-bookings.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { DurationPipe } from './shared/duration.pipe';
     AddTheatreComponent,
     MovieCardComponent,
     MovieDetailsComponent,
-    DurationPipe
+    DurationPipe,
+    ViewShowsComponent,
+    BookMovieComponent,
+    MyBookingsComponent
   ],
   imports: [
     BrowserModule,

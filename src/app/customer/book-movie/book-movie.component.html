@@ -1,0 +1,35 @@
+<div class="padding-top-15 padding-bottom-15">
+    <div class="col-sm-12">
+        <button type="submit" style="position: absolute;" class="btn btn-sm btn-outline-secondary" (click)="goBack()">
+            Back
+        </button>
+        <h2 class="text-center font-weight-light">
+            Booking Summary - {{ booking?.name }}
+        </h2>
+    </div>
+</div>
+
+<div class="row margin-1">
+    <div class="col-md-4 offset-md-4">
+        <ul class="list-group">
+            <li class="list-group-item">
+                Movie Name: <strong>{{ booking?.name }}</strong>
+            </li>
+            <li class="list-group-item">
+                Booking Date: <strong>{{ booking?.bookingDate }}</strong>
+            </li>
+            <li class="list-group-item">
+                Number of Seats: <strong>{{ booking?.noOfSeats }}</strong>
+            </li>
+            <li class="list-group-item">
+                Total Price: <strong>{{ booking?.noOfSeats * booking.ticketPrice | currency:'INR'}}</strong>
+            </li>
+            <li class="list-group-item">
+                Complete Booking
+                <button type="submit" class="btn btn-sm btn-outline-success btn-xs" (click)="bookMovie()">
+                    Book
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

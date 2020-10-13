@@ -1,12 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { BookingRequest } from '../models/booking-request';
 import { Movie } from '../models/movie';
+import { Theatre } from '../models/theatre';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+  bookMovie(booking: BookingRequest) {
+    let url = "http://localhost:7070/movie_app/v1/bookings";
+    return this.httpClient.post(url, booking);
+  }
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,5 +24,10 @@ export class CustomerService {
   getMovie(id: number): Observable<Movie> {
     let url = "http://localhost:7070/movie_app/v1/movies";
     return this.httpClient.get<Movie>(`${url}/${id}`);
+  }
+
+  getAllTheatres(): Observable<Theatre[]> {
+    let url = "http://localhost:7070/movie_app/v1/theatres";
+    return this.httpClient.get<Theatre[]>(url);
   }
 }

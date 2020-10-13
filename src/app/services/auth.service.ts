@@ -8,6 +8,9 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  getUser() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
   
   isLoggedIn(): boolean {
     return this.getToken() != null;

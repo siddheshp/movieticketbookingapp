@@ -1,0 +1,56 @@
+<div class="padding-top-15">
+    <div class="col-sm-12">
+        <button type="submit" style="position: absolute;" class="btn btn-sm btn-outline-secondary" (click)="goBack()">
+            Back
+        </button>
+        <h2 class="text-center font-weight-light">
+            List of Shows for <strong>{{ movie?.name }}</strong>
+        </h2>
+    </div>
+</div>
+<div class="col-md-8 offset-md-2">
+    <table class="table">
+        <tbody>
+            <ng-container *ngFor="let theater of movie?.theatreIds;let i=index">
+                <tr>
+                    <td>
+                        <img src="{{ movie?.coverURL }}" style="max-width: 200px;"
+                            class="card-img-top img-thumbnail clickable" alt="Movie cover" />
+                    </td>
+                    <td>
+                        <div>
+                            Showtime: <strong>03:00 PM - 05:15 PM</strong> <br />
+                            Theatre: <strong>{{theatres[theater].theatreName }}</strong><br />
+                            Ticket Price: <strong>{{ theatres[theater].ticketPrice | currency: 'INR'}}</strong><br />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group row">
+                            <label for="noOdSeats" class="col-sm-4 col-form-label">Number of Tickets:</label>
+                            <div class="col-sm-4">
+                                <select name="numbers" class="form-control" [(ngModel)]="noOfSeats">
+                                    <option *ngFor="let count of numbers" [value]="count">{{
+                      count
+                    }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="bookingDate" class="col-sm-4 col-form-label">Booking Date:</label>
+                            <div class="col-sm-4">
+                                <input type="date" class="form-control form-control-sm" name="bookingDate"
+                                    [(ngModel)]="bookingDate" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <button type="submit" style="position: absolute;"
+                                class="btn btn-sm btn-outline-success btn-xs" (click)="book(theater)">
+                                Book
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
