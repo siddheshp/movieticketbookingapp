@@ -22,8 +22,8 @@ export class MovieDetailsComponent implements OnInit {
     //get movie details from service
     this.route.params.subscribe(params => {
       this.customerService.getMovie(params.id).subscribe(result => {
+        result.trailerURL = this.domSanitizer.bypassSecurityTrustResourceUrl(result.trailerURL);
         this.movie = result;
-        this.movie.trailerURL = this.domSanitizer.bypassSecurityTrustResourceUrl(this.movie.trailerURL);
       }, err => alert(JSON.stringify(err)))
     }, err => alert(JSON.stringify(err)));
   }

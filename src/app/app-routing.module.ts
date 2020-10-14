@@ -1,3 +1,9 @@
+import { MyProfileComponent } from './shared/my-profile/my-profile.component';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { EditMovieComponent } from './admin/edit-movie/edit-movie.component';
+import { SearchComponent } from './shared/search/search.component';
+import { MyBookingsComponent } from './customer/my-bookings/my-bookings.component';
 import { BookMovieComponent } from './customer/book-movie/book-movie.component';
 import { ViewShowsComponent } from './customer/view-shows/view-shows.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
@@ -10,26 +16,30 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MovieDetailsComponent } from './customer/movie-details/movie-details.component';
+import { resetFakeAsyncZone } from '@angular/core/testing';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
-
-  { path: 'customer', component: CustomerComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
-  // { path: 'movie/:id', pathMatch: 'full', component: MovieDetailsComponent, canActivate: [AuthGuardGuard] },
-
+  { path: 'forgotPassword', component: ForgotPasswordComponent },
+  { path: 'resetPassword', component: ResetPasswordComponent },
+  { path: 'profile', component: MyProfileComponent },
+  
   { path: 'admin', component: AdminComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
   { path: 'theatre', component: AddTheatreComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
-  // { path: 'movie', component: AddmovieComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
 
+  { path: 'customer', component: CustomerComponent, pathMatch: 'full', canActivate: [AuthGuardGuard] },
+  { path: 'bookings', component: MyBookingsComponent, canActivate: [AuthGuardGuard] },
   {
     path: 'movie', canActivate: [AuthGuardGuard],
     children: [
       { path: 'book', component: BookMovieComponent },
       { path: ':id/shows', component: ViewShowsComponent },
       { path: ':id', component: MovieDetailsComponent },
-      { path: '', component: AddmovieComponent }
+      { path: '', component: AddmovieComponent },
+      { path: 'search/:movieName', component: SearchComponent },
+      { path: 'edit/:id', component: EditMovieComponent }
     ]
   }
 ];

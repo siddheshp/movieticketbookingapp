@@ -26,6 +26,16 @@ export class AdminService {
     return this.httpClient.post(url, movie);
   }
 
+  updateMovie(movie: Movie) {
+    let url = `http://localhost:7070/movie_app/v1/movies/${movie.movieId}`;
+    return this.httpClient.put<Movie>(url, movie);
+  }
+
+  getMovie(id: number): Observable<Movie> {
+    let url = "http://localhost:7070/movie_app/v1/movies";
+    return this.httpClient.get<Movie>(`${url}/${id}`);
+  }
+
   getMovieList(): Observable<Movie[]> {
     let url = "http://localhost:7070/movie_app/v1/movies";
     return this.httpClient.get<Movie[]>(url);

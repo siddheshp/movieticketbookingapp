@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Booking } from '../models/booking';
 import { BookingRequest } from '../models/booking-request';
 import { Movie } from '../models/movie';
 import { Theatre } from '../models/theatre';
@@ -9,6 +10,11 @@ import { Theatre } from '../models/theatre';
   providedIn: 'root'
 })
 export class CustomerService {
+  getBookings(customerId: number) {
+    let url = `http://localhost:7070/movie_app/v1/customers/${customerId}/bookings`;
+    return this.httpClient.get<Booking[]>(url);
+  }
+  
   bookMovie(booking: BookingRequest) {
     let url = "http://localhost:7070/movie_app/v1/bookings";
     return this.httpClient.post(url, booking);

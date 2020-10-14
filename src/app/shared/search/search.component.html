@@ -1,0 +1,42 @@
+<div class="padding-top-15 padding-bottom-15">
+    <div class="col-sm-12">
+        <button type="submit" style="position: absolute;" class="btn btn-sm btn-outline-secondary" (click)="goBack()">
+            Back
+        </button>
+        <h2 class="text-center font-weight-light">
+            Movie Search Result
+        </h2>
+    </div>
+</div>
+<div *ngIf="movies.length == 0">
+    <span>No movies found.</span>
+</div>
+<div class="container" *ngIf="movies.length > 0">
+    <div class="col-sm-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Movie Cover</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Release Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Language</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let movie of movies">
+                    <td><img class="img-thumbnail" src="{{ movie.coverURL }}" /></td>
+                    <th scope="row">{{ movie.name }}</th>
+                    <td>{{ movie.releaseDate | date }}</td>
+                    <td>{{ movie.statusId === 2 ? "Released" : "Upcoming" }}</td>
+                    <td>{{ movie.languageId === 2 ? "Hindi" : "English" }}</td>
+                    <td>
+                        <button type="button" (click)="details(movie.movieId)" class="btn btn-sm btn-secondary">
+                            Movie Details
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

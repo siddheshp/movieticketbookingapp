@@ -35,7 +35,7 @@ export class BookMovieComponent implements OnInit {
     delete this.booking.name;
     delete this.booking.ticketPrice;
     console.log(this.booking);
-    this.customerService.bookMovie(this.booking).subscribe(result => {
+    this.customerService.bookMovie(this.booking).pipe().subscribe(result => {
       alert('Booking completed');
       this.router.navigate(['/customer']);
     }, err => alert(JSON.stringify(err)));

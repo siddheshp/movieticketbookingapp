@@ -8,7 +8,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  getUser() {
+  getUser(): User {
     return JSON.parse(localStorage.getItem('user'));
   }
   

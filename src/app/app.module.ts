@@ -18,6 +18,11 @@ import { DurationPipe } from './shared/duration.pipe';
 import { ViewShowsComponent } from './customer/view-shows/view-shows.component';
 import { BookMovieComponent } from './customer/book-movie/book-movie.component';
 import { MyBookingsComponent } from './customer/my-bookings/my-bookings.component';
+import { SearchComponent } from './shared/search/search.component';
+import { EditMovieComponent } from './admin/edit-movie/edit-movie.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
+import { MyProfileComponent } from './shared/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { MyBookingsComponent } from './customer/my-bookings/my-bookings.componen
     DurationPipe,
     ViewShowsComponent,
     BookMovieComponent,
-    MyBookingsComponent
+    MyBookingsComponent,
+    SearchComponent,
+    EditMovieComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

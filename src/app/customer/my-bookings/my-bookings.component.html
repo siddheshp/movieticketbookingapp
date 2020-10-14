@@ -1,1 +1,28 @@
-<p>my-bookings works!</p>
+<div class="padding-top-15 padding-bottom-15">
+    <div class="col-sm-12">
+        <button type="submit" style="position: absolute;" class="btn btn-sm btn-outline-secondary" (click)="goBack()">
+            Back
+        </button>
+        <h2 class="text-center font-weight-light">
+            My Booking Summary
+        </h2>
+    </div>
+</div>
+<div class="col-md-4 offset-md-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Booking Ref. #</th>
+                <th scope="col">Booking Date</th>
+                <th scope="col">No of Seats</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of bookings">
+                <th scope="row">{{ booking.id }}</th>
+                <td>{{ booking.bookingDate }}</td>
+                <td>{{ booking.noOfSeats }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

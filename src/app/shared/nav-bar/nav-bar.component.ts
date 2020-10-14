@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
@@ -18,6 +19,10 @@ export class NavBarComponent implements OnInit {
     {
       label: 'SignUp',
       route: 'signup'
+    },
+    {
+      label: 'Forgot Password',
+      route: 'forgotPassword'
     }
   ];
 
@@ -31,6 +36,14 @@ export class NavBarComponent implements OnInit {
       route: 'bookings',
     },
     {
+      label: 'My Profile',
+      route: 'profile',
+    },
+    {
+      label: 'Reset Password',
+      route: 'resetPassword',
+    },
+    {
       label: 'Logout',
       route: 'signin',
     },
@@ -42,12 +55,20 @@ export class NavBarComponent implements OnInit {
       route: 'admin',
     },
     {
+      label: 'Add Theatre',
+      route: 'theatre',
+    },
+    {
       label: 'Add Movie',
       route: 'movie',
     },
     {
-      label: 'Add Theatre',
-      route: 'theatre',
+      label: 'My Profile',
+      route: 'profile',
+    },
+    {
+      label: 'Reset Password',
+      route: 'resetPassword',
     },
     {
       label: 'Logout',
@@ -55,7 +76,8 @@ export class NavBarComponent implements OnInit {
     },
   ];
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router:Router) { }
 
   ngOnInit(): void {
     // subscribe to user of authservice
@@ -74,6 +96,7 @@ export class NavBarComponent implements OnInit {
   }
 
   searchMovie(){
-
+    //navigate to search route
+    this.router.navigate([`/movie/search/${this.movieName}`]);
   }
 }

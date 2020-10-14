@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Theatre } from './../../models/theatre';
 import { AdminService } from './../../services/admin.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,8 @@ export class AdminComponent implements OnInit {
   movies: Movie[];
   theatres: Theatre[];
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService,
+    private router: Router) { }
 
   ngOnInit(): void {
     //get theatre list
@@ -32,5 +34,6 @@ export class AdminComponent implements OnInit {
 
   edit(movie: Movie) {
     //navigate to edit movie, pass movieId
+    this.router.navigate([`/movie/edit/${movie.movieId}`]);
   }
 }
