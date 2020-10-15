@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
         this.movies = movieList.filter(m => {
           return m.name.toLowerCase().indexOf(params.movieName.toLowerCase()) > -1 ? true : false;
         }, err => alert(JSON.stringify(err)));
-      }, err => alert(JSON.stringify(err)))
+      }, err => alert(JSON.stringify(err)));
     }, err => alert(JSON.stringify(err)));
   }
 

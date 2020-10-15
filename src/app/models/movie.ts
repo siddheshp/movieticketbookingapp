@@ -9,4 +9,8 @@ export class Movie {
     languageId: number;
     statusId: number;
     theatreIds: any[];
+
+    constructor(movie?: Movie) {
+        Object.assign(this, movie);
+    }
 }

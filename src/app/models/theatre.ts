@@ -5,4 +5,8 @@ export class Theatre{
     cityId: number;
     movieIds: number[];
     bookingIds: number[];
+
+    constructor(theatre? : Theatre){
+        Object.assign(this, theatre);
+    }
 }

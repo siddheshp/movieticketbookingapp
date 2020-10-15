@@ -33,7 +33,7 @@ export class CustomerService {
   }
 
   getAllTheatres(): Observable<Theatre[]> {
-    let url = "http://localhost:7070/movie_app/v1/theatres";
+    const url = "http://localhost:7070/movie_app/v1/theatres";
     return this.httpClient.get<Theatre[]>(url);
   }
 }
