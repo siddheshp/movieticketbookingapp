@@ -20,8 +20,8 @@
                     <td>
                         <div>
                             Showtime: <strong>03:00 PM - 05:15 PM</strong> <br />
-                            Theatre: <strong>{{theatres[theater].theatreName }}</strong><br />
-                            Ticket Price: <strong>{{ theatres[theater].ticketPrice | currency: 'INR'}}</strong><br />
+                            Theatre: <strong>{{ getTheatreName(theater) }}</strong><br />
+                            Ticket Price: <strong>{{ getTicketPrice(theater) | currency: 'INR'}}</strong><br />
                         </div>
                     </td>
                     <td>
@@ -29,7 +29,7 @@
                             <label for="noOdSeats" class="col-sm-4 col-form-label">Number of Tickets:</label>
                             <div class="col-sm-4">
                                 <select name="numbers" class="form-control" [(ngModel)]="noOfSeats">
-                                    <option *ngFor="let count of numbers" [value]="count">{{count}}</option>
+                                    <option *ngFor="let num of numbers" [value]="num">{{num}}</option>
                                 </select>
                             </div>
                         </div>

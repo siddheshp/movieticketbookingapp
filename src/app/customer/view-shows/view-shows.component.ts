@@ -28,7 +28,7 @@ export class ViewShowsComponent implements OnInit {
 
   ngOnInit(): void {
     //http://localhost:4200/movie/1/shows
-    
+
     //get theatre list
     this.customerService.getAllTheatres().subscribe(theatreList => {
       this.theatres = theatreList;
@@ -37,24 +37,32 @@ export class ViewShowsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.customerService.getMovie(params.id).subscribe(result => {
         this.movie = result;
-      }, err => alert(JSON.stringify(err)));      
+      }, err => alert(JSON.stringify(err)));
     }, err => alert(JSON.stringify(err)));
   }
   goBack() {
     this.location.back();
   }
 
-  book(theatreId: number){
+  book(theatreId: number) {
     this.router.navigate(['/movie/book'], {
-      queryParams:{
+      queryParams: {
         customerId: this.authService.getUser().customerId,
         movieId: this.movie.movieId,
         name: this.movie.name,
         theatreId: theatreId,
         noOfSeats: this.noOfSeats,
         bookingDate: this.datePipe.transform(this.bookingDate, 'yyyy-MM-dd'),
-        ticketPrice: this.theatres[theatreId].ticketPrice
+        ticketPrice: this.theatres.find(t => t.theatreId === theatreId).ticketPrice
       }
     });
+  }
+
+  getTheatreName(theatreId: number) {
+    return this.theatres.find(t => t.theatreId === theatreId).theatreName;
+  }
+
+  getTicketPrice(theatreId: number) {
+    return this.theatres.find(t => t.theatreId === theatreId).ticketPrice;
   }
 }
